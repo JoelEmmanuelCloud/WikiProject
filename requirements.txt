@@ -1,0 +1,7 @@
+boto3
+pandas
+mwclient
+mwparserfromhell
+numpy
+scikit-learn
+python-dotenv
