@@ -47,11 +47,13 @@ def get_wikipedia_titles(category, max_articles=10):
     titles = [cm.name for cm in category_page.members() if isinstance(cm, mwclient.page.Page)]
     return titles[:max_articles]
 
-# Function to get Wikipedia article text
+# Function to get Wikipedia article text and construct the full URL
 def get_wikipedia_text(title):
     site = mwclient.Site('en.wikipedia.org')
     page = site.pages[title]
-    return page.text(), page.fullurl
+    base_url = "https://en.wikipedia.org/wiki/"
+    fullurl = base_url + title.replace(" ", "_")
+    return page.text(), fullurl
 
 # Function to split text into chunks by sections and paragraphs
 def split_text_into_chunks(text, max_tokens=500):
